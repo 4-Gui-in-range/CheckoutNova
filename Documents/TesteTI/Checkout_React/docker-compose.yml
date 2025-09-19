@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: checkout_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: checkout_nova_concursos
+      MYSQL_USER: checkout_user
+      MYSQL_PASSWORD: checkout123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./backend/scripts:/docker-entrypoint-initdb.d
+    networks:
+      - checkout_network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: checkout_backend
+    restart: unless-stopped
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: checkout_user
+      DB_PASSWORD: checkout123
+      DB_NAME: checkout_nova_concursos
+      PORT: 3001
+      NODE_ENV: production
+      CORS_ORIGIN: http://localhost:4173
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mysql
+    networks:
+      - checkout_network
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: checkout_frontend
+    restart: unless-stopped
+    ports:
+      - "4173:4173"
+    depends_on:
+      - backend
+    networks:
+      - checkout_network
+
+volumes:
+  mysql_data:
+
+networks:
+  checkout_network:
+    driver: bridge

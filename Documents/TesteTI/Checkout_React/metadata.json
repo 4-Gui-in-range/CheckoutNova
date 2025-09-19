@@ -1,0 +1,5 @@
+{
+  "name": "Nova Concursos Checkout",
+  "description": "Aplicacao feita para um teste tecnico de um sistema de checkout, contendo product CRUD, um carrinho de compras, e um gateway de pagamento simulado, construido com React e Tailwind CSS.",
+  "requestFramePermissions": []
+}

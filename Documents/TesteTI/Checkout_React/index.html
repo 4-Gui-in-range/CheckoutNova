@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nova Concursos - Checkout</title>
+    <!-- Tailwind via CDN removed; use local styles/build for consistency with Vite -->
+    <style>
+      /* Esconde os botões de spinner em inputs do tipo number no Chrome, Safari, Edge e Opera */
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      /* Esconde os botões de spinner em inputs do tipo number no Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      /* Garantir que os botões sejam clicáveis */
+      button {
+        pointer-events: auto !important;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Garantir que os botões não sejam bloqueados por outros elementos */
+      .cart-item-actions {
+        position: relative;
+        z-index: 10;
+      }
+
+      /* Melhorar a área clicável dos botões */
+      .cart-remove-btn {
+        min-width: 40px;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 20;
+      }
+
+      /* Garantir que os botões de quantidade funcionem */
+      .cart-quantity-btn {
+        position: relative;
+        z-index: 15;
+        pointer-events: auto !important;
+      }
+
+      /* Garantir que o botão limpar carrinho funcione */
+      .clear-cart-btn {
+        position: relative;
+        z-index: 15;
+        pointer-events: auto !important;
+      }
+
+      /* Garantir que os botões de admin funcionem */
+      .admin-delete-btn {
+        position: relative;
+        z-index: 20;
+        pointer-events: auto !important;
+        min-width: 36px;
+        min-height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .admin-edit-btn {
+        position: relative;
+        z-index: 15;
+        pointer-events: auto !important;
+      }
+    </style>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body class="bg-gray-50">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
