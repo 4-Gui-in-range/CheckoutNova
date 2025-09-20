@@ -42,6 +42,10 @@ npm run setup
 ```sql
 CREATE DATABASE checkout_nova_concursos;
 ```
+## Acesso ao MySQL
+
+checkout_user
+checkout123
 
 3. Configure as variáveis de ambiente:
 
